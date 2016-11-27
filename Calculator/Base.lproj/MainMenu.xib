@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,8 +13,10 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Calculator" customModuleProvider="target">
             <connections>
+                <outlet property="InputField" destination="dp8-zX-D8z" id="S2g-nm-viu"/>
+                <outlet property="OutputField" destination="SNp-a6-rQ7" id="b5i-5L-ssU"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -681,12 +685,76 @@
         <window title="Calculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="contentRect" x="335" y="390" width="480" height="361"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="361"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="IHk-NB-BTk">
+                        <rect key="frame" x="20" y="20" width="440" height="321"/>
+                        <subviews>
+                            <customView id="zGP-Ca-SHP">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="152"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-zX-D8z">
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="152"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="152" id="k1h-Vc-p7b"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="x3d-fj-3Qf">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dp8-zX-D8z" secondAttribute="bottom" id="CWR-qr-JoA"/>
+                                    <constraint firstAttribute="trailing" secondItem="dp8-zX-D8z" secondAttribute="trailing" id="NgW-YS-g5G"/>
+                                    <constraint firstItem="dp8-zX-D8z" firstAttribute="top" secondItem="zGP-Ca-SHP" secondAttribute="top" id="Y8k-4n-Muc"/>
+                                    <constraint firstItem="dp8-zX-D8z" firstAttribute="leading" secondItem="zGP-Ca-SHP" secondAttribute="leading" id="oXd-5L-5kc"/>
+                                </constraints>
+                            </customView>
+                            <customView id="1oC-BL-PI5">
+                                <rect key="frame" x="0.0" y="162" width="440" height="159"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNp-a6-rQ7">
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="159"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="159" id="4lX-8G-Hw6"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LcB-vQ-yDs">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SNp-a6-rQ7" secondAttribute="trailing" id="NPd-5U-fLL"/>
+                                    <constraint firstItem="SNp-a6-rQ7" firstAttribute="leading" secondItem="1oC-BL-PI5" secondAttribute="leading" id="SU7-RH-Yiw"/>
+                                    <constraint firstItem="SNp-a6-rQ7" firstAttribute="top" secondItem="1oC-BL-PI5" secondAttribute="top" id="xd3-Fb-K1G"/>
+                                    <constraint firstAttribute="bottom" secondItem="SNp-a6-rQ7" secondAttribute="bottom" id="xes-AQ-vWa"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <holdingPriorities>
+                            <real value="250"/>
+                            <real value="250"/>
+                        </holdingPriorities>
+                    </splitView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IHk-NB-BTk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="e4a-5v-A2l"/>
+                    <constraint firstAttribute="trailing" secondItem="IHk-NB-BTk" secondAttribute="trailing" constant="20" symbolic="YES" id="j11-Vz-otl"/>
+                    <constraint firstAttribute="bottom" secondItem="IHk-NB-BTk" secondAttribute="bottom" constant="20" symbolic="YES" id="w5Y-9Z-bOm"/>
+                    <constraint firstItem="IHk-NB-BTk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="zfb-ND-H9d"/>
+                </constraints>
             </view>
+            <point key="canvasLocation" x="-161" y="-177"/>
         </window>
     </objects>
 </document>

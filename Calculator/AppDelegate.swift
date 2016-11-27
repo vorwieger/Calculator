@@ -9,19 +9,20 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     @IBOutlet weak var window: NSWindow!
-
-
+    @IBOutlet weak var inputField: NSTextField!
+    @IBOutlet weak var outputField: NSTextField!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        inputField.delegate = self
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    override func controlTextDidChange(_ notification: Notification) {
+        let textField = notification.object as! NSTextField
+        outputField.stringValue = textField.stringValue
     }
-
 
 }
 
