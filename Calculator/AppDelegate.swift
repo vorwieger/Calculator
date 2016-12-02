@@ -21,7 +21,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     override func controlTextDidChange(_ notification: Notification) {
         let textField = notification.object as! NSTextField
-        outputField.stringValue = textField.stringValue
+        let source = textField.stringValue.replacingOccurrences(of: ",", with: ".")
+        
+        let lexer = Lexer(input: source)
+        let tokens = lexer.tokenize()
+        //print(tokens)
+        if tokens.count > 0 {
+            let parser = Parser(tokens: tokens)
+            do {
+                let expr = try parser.parseExpression()
+                print(expr)
+                let behaviour = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.plain, scale: 15, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+                outputField.stringValue = expr.result.rounding(accordingToBehavior: behaviour ).description
+                print(expr.result.description)
+            }
+            catch {
+                outputField.stringValue = "\(error)"
+            }
+        } else {
+            outputField.stringValue = "";
+        }
     }
 
 }

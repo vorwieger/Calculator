@@ -685,14 +685,14 @@
         <window title="Calculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="361"/>
+            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="361"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="IHk-NB-BTk">
-                        <rect key="frame" x="20" y="20" width="440" height="321"/>
+                    <splitView arrangesAllSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHk-NB-BTk">
+                        <rect key="frame" x="20" y="20" width="440" height="320"/>
                         <subviews>
                             <customView id="zGP-Ca-SHP">
                                 <rect key="frame" x="0.0" y="0.0" width="440" height="152"/>
@@ -703,8 +703,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="152" id="k1h-Vc-p7b"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="x3d-fj-3Qf">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="x3d-fj-3Qf">
+                                            <font key="font" metaFont="system" size="24"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -718,7 +718,7 @@
                                 </constraints>
                             </customView>
                             <customView id="1oC-BL-PI5">
-                                <rect key="frame" x="0.0" y="162" width="440" height="159"/>
+                                <rect key="frame" x="0.0" y="161" width="440" height="159"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNp-a6-rQ7">
@@ -726,8 +726,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="159" id="4lX-8G-Hw6"/>
                                         </constraints>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LcB-vQ-yDs">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LcB-vQ-yDs">
+                                            <font key="font" metaFont="system" size="50"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
