@@ -25,24 +25,18 @@ class Parser {
         self.tokens = tokens
     }
 
-    func peekCurrentToken() throws -> Token {
-        if index >= tokens.count {
-            throw Errors.unexpectedToken
-        }
-        return tokens[index]
+    func peekCurrentToken() -> Token? {
+        return index < tokens.count ? tokens[index] : nil
     }
 
-    func popCurrentToken() throws -> Token {
-        if index >= tokens.count {
-            throw Errors.unexpectedToken
-        }
-        let token = tokens[index]
+    func popCurrentToken() -> Token? {
+        let token = index < tokens.count ? tokens[index] : nil
         index += 1
         return token
     }
     
     func parseNumber() throws -> ExprNode {
-        guard case let Token.number(value) = try popCurrentToken() else {
+        guard case let Token.number(value)? = popCurrentToken() else {
             throw Errors.unexpectedToken
         }
         return NumberNode(value: value)
@@ -54,21 +48,21 @@ class Parser {
     }
 
     func parseParens() throws -> ExprNode {
-        guard case Token.parensOpen = try popCurrentToken() else {
+        guard case Token.parensOpen? = popCurrentToken() else {
             throw Errors.expectedCharacter("(")
         }
         let exp = try parseExpression()
-        guard case Token.parensClose = try popCurrentToken() else {
+        guard case Token.parensClose? = popCurrentToken() else {
             throw Errors.expectedCharacter(")")
         }
         return exp
     }
     
     func parsePrimary() throws -> ExprNode {
-        switch (try peekCurrentToken()) {
-        case .number:
+        switch (peekCurrentToken()) {
+        case .number?:
             return try parseNumber()
-        case .parensOpen:
+        case .parensOpen?:
             return try parseParens()
         default:
             throw Errors.expectedExpression
@@ -86,7 +80,7 @@ class Parser {
         guard index < tokens.count else {
             return -1
         }
-        guard case let Token.operand(op) = try peekCurrentToken() else {
+        guard case let Token.operand(op)? = peekCurrentToken() else {
             return -1
         }
         guard let precedence = operatorPrecedence[op] else {
@@ -102,7 +96,7 @@ class Parser {
             if tokenPrecedence < exprPrecedence {
                 return lhs
             }
-            guard case let Token.operand(op) = try popCurrentToken() else {
+            guard case let Token.operand(op)? = popCurrentToken() else {
                 throw Errors.unexpectedToken
             }
             var rhs = try parsePrimary()

@@ -8,8 +8,6 @@
 
 import Foundation
 
-let behaviour = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.plain, scale:100, raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
-
 public protocol ExprNode: CustomStringConvertible {
     var result:NSDecimalNumber { get }
 }
@@ -36,8 +34,8 @@ public struct BinaryOpNode: ExprNode {
         case "+":  return lhs.result.adding(rhs.result)
         case "-":  return lhs.result.subtracting(rhs.result)
         case "*":  return lhs.result.multiplying(by: rhs.result)
-        case "/":  return lhs.result.dividing(by: rhs.result, withBehavior: behaviour)
-        default: return NSDecimalNumber(string: "0")
+        case "/":  return lhs.result.dividing(by: rhs.result)
+        default: return NSDecimalNumber()
         }
     }
 }

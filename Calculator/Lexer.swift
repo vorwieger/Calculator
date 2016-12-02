@@ -35,7 +35,6 @@ public class Lexer {
     public func tokenize() throws -> [Token] {
         var tokens = [Token]()
         var content = input
-        
         while (content.characters.count > 0) {
             var matched = false
             for (pattern, generator) in tokenList {
