@@ -12,7 +12,7 @@ public enum Token {
     case number(String)
     case parensOpen
     case parensClose
-    case other(String)
+    case operand(String)
 }
 
 typealias TokenGenerator = (String) -> Token?
@@ -20,7 +20,8 @@ let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
     ("[0-9.]+", { r in .number(r) }),
     ("\\(", { _ in .parensOpen }),
-    ("\\)", { _ in .parensClose })
+    ("\\)", { _ in .parensClose }),
+    ("[\\+\\-\\*\\/]", { r in .operand(r) })
 ]
 
 public class Lexer {
@@ -31,15 +32,15 @@ public class Lexer {
         self.input = input
     }
     
-    public func tokenize() -> [Token] {
+    public func tokenize() throws -> [Token] {
         var tokens = [Token]()
         var content = input
         
         while (content.characters.count > 0) {
             var matched = false
-            
             for (pattern, generator) in tokenList {
-                if let m = content.match(pattern) {
+                if let range = content.range(of:"^\(pattern)", options: .regularExpression) {
+                    let m = content.substring(with:range)
                     if let t = generator(m) {
                         tokens.append(t)
                     }
@@ -50,14 +51,13 @@ public class Lexer {
                     break
                 }
             }
-            
             if !matched {
-                let index = content.characters.index(content.startIndex, offsetBy: 1)
-                tokens.append(.other(content.substring(to: index)))
-                content = content.substring(from: index)
+                throw Errors.unexpectedToken
             }
         }
         return tokens
     }
     
 }
+
+

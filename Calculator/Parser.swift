@@ -86,7 +86,7 @@ class Parser {
         guard index < tokens.count else {
             return -1
         }
-        guard case let Token.other(op) = try peekCurrentToken() else {
+        guard case let Token.operand(op) = try peekCurrentToken() else {
             return -1
         }
         guard let precedence = operatorPrecedence[op] else {
@@ -102,7 +102,7 @@ class Parser {
             if tokenPrecedence < exprPrecedence {
                 return lhs
             }
-            guard case let Token.other(op) = try popCurrentToken() else {
+            guard case let Token.operand(op) = try popCurrentToken() else {
                 throw Errors.unexpectedToken
             }
             var rhs = try parsePrimary()
