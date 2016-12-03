@@ -60,6 +60,8 @@ class Parser {
     
     func parsePrimary() throws -> ExprNode {
         switch (peekCurrentToken()) {
+        case .operand?:
+            return try parseBinaryOp(NumberNode(value: "0"))
         case .number?:
             return try parseNumber()
         case .parensOpen?:

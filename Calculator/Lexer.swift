@@ -18,7 +18,7 @@ public enum Token {
 typealias TokenGenerator = (String) -> Token?
 let tokenList: [(String, TokenGenerator)] = [
     ("[ \t\n]", { _ in nil }),
-    ("[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?", { r in .number(r) }),
+    ("[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?", { r in .number(r) }),
     ("\\(", { _ in .parensOpen }),
     ("\\)", { _ in .parensClose }),
     ("[\\+\\-\\*\\/]", { r in .operand(r) })
