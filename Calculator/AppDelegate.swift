@@ -14,24 +14,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var inputField: NSTextField!
     @IBOutlet weak var outputField: NSTextField!
+    @IBOutlet weak var scaleField: NSTextField!
+    @IBOutlet weak var scaleSlider: NSSlider!
+    
+    var scale:Int = 0 {
+        didSet {
+            scaleField.intValue = Int32(scale)
+            calculate()
+        }
+    }
+    
+    var input:String = "" {
+        didSet {
+            calculate()
+        }
+    }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         inputField.delegate = self
+        scale = 15
+    }
+    
+    @IBAction func scaleChanged(_ slider: NSSlider) {
+        scale = Int(slider.intValue)
     }
 
     override func controlTextDidChange(_ notification: Notification) {
         let textField = notification.object as! NSTextField
-        let source = textField.stringValue.replacingOccurrences(of: ",", with: ".")
-
+        input = textField.stringValue.replacingOccurrences(of: ",", with: ".")
+    }
+    
+    func calculate() {
         do {
-            let calculator = Calculator(input: source)
-            calculator.scale = 15
+            let calculator = Calculator(input: input)
+            calculator.scale = scale
             let locale = Locale(identifier: "de")
             outputField.textColor = NSColor.black
             outputField.stringValue = try calculator.calc()?.description(withLocale:locale) ?? ""
         } catch {
             outputField.textColor = NSColor.red
-            outputField.stringValue = "\(error)"
+            //outputField.stringValue = "\(error.localizedDescription)"
         }
     }
 
