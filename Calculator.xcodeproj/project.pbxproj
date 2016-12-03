@@ -14,6 +14,7 @@
 		D0B040991DEB1320001E816E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B040981DEB1320001E816E /* Assets.xcassets */; };
 		D0B0409C1DEB1320001E816E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B0409A1DEB1320001E816E /* MainMenu.xib */; };
 		D0D69C711DF20E9000DEAFAB /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D69C701DF20E9000DEAFAB /* Calculator.swift */; };
+		D0D69C741DF335A200DEAFAB /* OutputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D69C731DF335A200DEAFAB /* OutputTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D0B0409B1DEB1320001E816E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D0B0409D1DEB1320001E816E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D69C701DF20E9000DEAFAB /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		D0D69C731DF335A200DEAFAB /* OutputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				D0B040981DEB1320001E816E /* Assets.xcassets */,
 				D0B0409A1DEB1320001E816E /* MainMenu.xib */,
+				D0D69C731DF335A200DEAFAB /* OutputTextField.swift */,
 				D0B0409D1DEB1320001E816E /* Info.plist */,
 				D0B040961DEB1320001E816E /* AppDelegate.swift */,
 				D0D69C701DF20E9000DEAFAB /* Calculator.swift */,
@@ -147,6 +150,7 @@
 				D0897A431DF0A7920083F864 /* Lexer.swift in Sources */,
 				D0B040971DEB1320001E816E /* AppDelegate.swift in Sources */,
 				D0D69C711DF20E9000DEAFAB /* Calculator.swift in Sources */,
+				D0D69C741DF335A200DEAFAB /* OutputTextField.swift in Sources */,
 				D0897A451DF0A8270083F864 /* Nodes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

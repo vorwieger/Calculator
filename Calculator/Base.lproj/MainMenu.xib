@@ -682,8 +682,8 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Calculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Calculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -691,68 +691,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <splitView arrangesAllSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHk-NB-BTk">
-                        <rect key="frame" x="20" y="20" width="440" height="320"/>
-                        <subviews>
-                            <customView id="zGP-Ca-SHP">
-                                <rect key="frame" x="0.0" y="0.0" width="440" height="152"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-zX-D8z">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="152"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="152" id="k1h-Vc-p7b"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="x3d-fj-3Qf">
-                                            <font key="font" metaFont="system" size="24"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="dp8-zX-D8z" secondAttribute="bottom" id="CWR-qr-JoA"/>
-                                    <constraint firstAttribute="trailing" secondItem="dp8-zX-D8z" secondAttribute="trailing" id="NgW-YS-g5G"/>
-                                    <constraint firstItem="dp8-zX-D8z" firstAttribute="top" secondItem="zGP-Ca-SHP" secondAttribute="top" id="Y8k-4n-Muc"/>
-                                    <constraint firstItem="dp8-zX-D8z" firstAttribute="leading" secondItem="zGP-Ca-SHP" secondAttribute="leading" id="oXd-5L-5kc"/>
-                                </constraints>
-                            </customView>
-                            <customView id="1oC-BL-PI5">
-                                <rect key="frame" x="0.0" y="161" width="440" height="159"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNp-a6-rQ7">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="159"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="159" id="4lX-8G-Hw6"/>
-                                        </constraints>
-                                        <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="LcB-vQ-yDs">
-                                            <font key="font" metaFont="system" size="50"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="SNp-a6-rQ7" secondAttribute="trailing" id="NPd-5U-fLL"/>
-                                    <constraint firstItem="SNp-a6-rQ7" firstAttribute="leading" secondItem="1oC-BL-PI5" secondAttribute="leading" id="SU7-RH-Yiw"/>
-                                    <constraint firstItem="SNp-a6-rQ7" firstAttribute="top" secondItem="1oC-BL-PI5" secondAttribute="top" id="xd3-Fb-K1G"/>
-                                    <constraint firstAttribute="bottom" secondItem="SNp-a6-rQ7" secondAttribute="bottom" id="xes-AQ-vWa"/>
-                                </constraints>
-                            </customView>
-                        </subviews>
-                        <holdingPriorities>
-                            <real value="250"/>
-                            <real value="250"/>
-                        </holdingPriorities>
-                    </splitView>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SNp-a6-rQ7" customClass="OutputTextField" customModule="Calculator" customModuleProvider="target">
+                        <rect key="frame" x="18" y="20" width="444" height="159"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="charWrapping" truncatesLastVisibleLine="YES" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="LcB-vQ-yDs" customClass="OutputTextFieldCell" customModule="Calculator" customModuleProvider="target">
+                            <font key="font" metaFont="system" size="50"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-zX-D8z">
+                        <rect key="frame" x="20" y="188" width="440" height="152"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="x3d-fj-3Qf">
+                            <font key="font" metaFont="system" size="24"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="IHk-NB-BTk" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="e4a-5v-A2l"/>
-                    <constraint firstAttribute="trailing" secondItem="IHk-NB-BTk" secondAttribute="trailing" constant="20" symbolic="YES" id="j11-Vz-otl"/>
-                    <constraint firstAttribute="bottom" secondItem="IHk-NB-BTk" secondAttribute="bottom" constant="20" symbolic="YES" id="w5Y-9Z-bOm"/>
-                    <constraint firstItem="IHk-NB-BTk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="zfb-ND-H9d"/>
-                </constraints>
             </view>
             <point key="canvasLocation" x="-161" y="-177"/>
         </window>
