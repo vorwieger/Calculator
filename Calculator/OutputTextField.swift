@@ -13,6 +13,10 @@ class OutputTextField: NSTextField {
     override func draw(_ dirtyRect: NSRect) {
         let size = calculateFontSize(self.bounds.size)
         self.font = NSFont.systemFont(ofSize: size)
+        
+        let bSize = boudingSize(bounds.size, fontSize:size)
+        let offset = frame.size.height - bSize.height
+        self.frame = NSRect(x: frame.origin.x, y: 20.0 - offset/2, width: frame.size.width, height: frame.size.height)
         super.draw(dirtyRect)
     }
 
@@ -35,8 +39,7 @@ class OutputTextField: NSTextField {
     func boudingSize(_ size: NSSize, fontSize _fontSize:CGFloat) -> NSSize {
         let attr = attributes(_fontSize)
         let options = NSStringDrawingOptions.usesLineFragmentOrigin
-        let rect = (stringValue as NSString).boundingRect(with: size,
-                                                   options: options, attributes: attr)
+        let rect = (stringValue as NSString).boundingRect(with: size, options: options, attributes: attr)
         return rect.size
     }
     
