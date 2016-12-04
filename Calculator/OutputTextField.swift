@@ -10,25 +10,25 @@ import Cocoa
 
 class OutputTextField: NSTextField {
 
+    func defaultFont(_ fontSize:CGFloat) -> NSFont {
+        return NSFont.systemFont(ofSize: fontSize)
+    }
+
     override func draw(_ dirtyRect: NSRect) {
         let size = calculateFontSize(self.bounds.size)
-        self.font = NSFont.systemFont(ofSize: size)
+        self.font = defaultFont(size)
         
         let bSize = boudingSize(bounds.size, fontSize:size)
         let offset = frame.size.height - bSize.height
         self.frame = NSRect(x: frame.origin.x, y: 20.0 - offset/2, width: frame.size.width, height: frame.size.height)
         super.draw(dirtyRect)
     }
-
-    func defaultFont(_ fontSize:CGFloat) -> NSFont {
-        return NSFont.systemFont(ofSize: fontSize)
-    }
-
+    
     func attributes(_ fontSize:CGFloat) -> [String:AnyObject] {
         let font = defaultFont(fontSize)
         let color = NSColor.white
         let style = NSMutableParagraphStyle()
-        style.lineBreakMode = NSLineBreakMode.byWordWrapping
+        style.lineBreakMode = NSLineBreakMode.byCharWrapping
         return [
             NSFontAttributeName: font,
             NSForegroundColorAttributeName: color,
