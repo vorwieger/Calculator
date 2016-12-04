@@ -41,7 +41,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
 
     override func controlTextDidChange(_ notification: Notification) {
         let textField = notification.object as! NSTextField
-        input = textField.stringValue.replacingOccurrences(of: ",", with: ".")
+        input = textField.stringValue
+            .replacingOccurrences(of: ",", with: ".")
+            .replacingOccurrences(of: "x", with: "*")
+            .replacingOccurrences(of: "X", with: "*")
+            .replacingOccurrences(of: "×", with: "*")
+            .replacingOccurrences(of: "÷", with: "/")
+        textField.stringValue = input
+            .replacingOccurrences(of: ".", with: ",")
+            .replacingOccurrences(of: "*", with: "×")
+            .replacingOccurrences(of: "/", with: "÷")
     }
     
     func calculate() {
