@@ -49,11 +49,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
             let calculator = Calculator(input: input)
             calculator.scale = scale
             let locale = Locale(identifier: "de")
-            outputField.textColor = NSColor.black
-            outputField.stringValue = try calculator.calc()?.description(withLocale:locale) ?? ""
+            if let result = try calculator.calc() {
+                if (result == NSDecimalNumber.notANumber) {
+                    outputField.textColor = NSColor.red
+                    outputField.stringValue = "Error"
+                } else {
+                    outputField.textColor = NSColor.black
+                    outputField.stringValue = result.description(withLocale:locale)
+                }
+            } else {
+                outputField.stringValue = ""
+            }
         } catch {
             outputField.textColor = NSColor.red
-            //outputField.stringValue = "\(error.localizedDescription)"
         }
     }
 

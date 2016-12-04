@@ -23,7 +23,7 @@ public class Calculator {
         if tokens.count > 0 {
             let parser = Parser(tokens: tokens)
             let expr = try parser.parseExpression()
-            let behaviour = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.plain, scale: Int16(self.scale), raiseOnExactness: true, raiseOnOverflow: true, raiseOnUnderflow: true, raiseOnDivideByZero: true)
+            let behaviour = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.plain, scale: Int16(self.scale), raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
             return expr.result.rounding(accordingToBehavior: behaviour)
         } else {
             return nil
