@@ -17,8 +17,10 @@
             <connections>
                 <outlet property="InputField" destination="dp8-zX-D8z" id="S2g-nm-viu"/>
                 <outlet property="OutputField" destination="SNp-a6-rQ7" id="b5i-5L-ssU"/>
+                <outlet property="inputField" destination="dp8-zX-D8z" id="Lqd-G2-6hd"/>
+                <outlet property="outputField" destination="SNp-a6-rQ7" id="3zf-Uw-qGQ"/>
                 <outlet property="scaleField" destination="TV7-G3-JKK" id="05M-0u-pUp"/>
-                <outlet property="scaleSlider" destination="6gh-Nc-pJV" id="bN4-eI-3j6"/>
+                <outlet property="scaleSlider" destination="aTO-sx-922" id="0Ca-XW-yN1"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -694,7 +696,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SNp-a6-rQ7" customClass="OutputTextField" customModule="Calculator" customModuleProvider="target">
-                        <rect key="frame" x="18" y="20" width="444" height="159"/>
+                        <rect key="frame" x="18" y="20" width="444" height="137"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="charWrapping" truncatesLastVisibleLine="YES" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="LcB-vQ-yDs">
                             <font key="font" metaFont="system" size="50"/>
@@ -703,7 +705,7 @@
                         </textFieldCell>
                     </textField>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-zX-D8z">
-                        <rect key="frame" x="20" y="188" width="416" height="152"/>
+                        <rect key="frame" x="20" y="188" width="440" height="152"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" placeholderString="" drawsBackground="YES" id="x3d-fj-3Qf">
                             <font key="font" metaFont="system" size="24"/>
@@ -711,8 +713,25 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <slider focusRingType="exterior" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aTO-sx-922">
+                        <rect key="frame" x="98" y="157" width="340" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" continuous="YES" state="on" focusRingType="exterior" alignment="left" maxValue="37" doubleValue="15" tickMarkPosition="below" numberOfTickMarks="38" allowsTickMarkValuesOnly="YES" sliderType="linear" id="IW9-Ca-MfV"/>
+                        <connections>
+                            <action selector="scaleChanged:" target="Voe-Tx-rLC" id="2r5-UV-Ovb"/>
+                        </connections>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kK-lf-Ae2">
+                        <rect key="frame" x="18" y="163" width="76" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Genauigkeit" id="dn5-7h-UbD">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TV7-G3-JKK">
-                        <rect key="frame" x="442" y="188" width="20" height="17"/>
+                        <rect key="frame" x="442" y="163" width="20" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="" id="oqp-Mr-xF7">
                             <font key="font" metaFont="system"/>
@@ -720,14 +739,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <slider horizontalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gh-Nc-pJV">
-                        <rect key="frame" x="443" y="207" width="24" height="137"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <sliderCell key="cell" continuous="YES" alignment="left" maxValue="37" doubleValue="15" tickMarkPosition="left" numberOfTickMarks="38" allowsTickMarkValuesOnly="YES" sliderType="linear" id="l6N-PY-aZE"/>
-                        <connections>
-                            <action selector="scaleChanged:" target="Voe-Tx-rLC" id="FPo-fu-9oY"/>
-                        </connections>
-                    </slider>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-161" y="-177"/>

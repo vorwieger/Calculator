@@ -11,7 +11,6 @@ import Foundation
 public class Calculator {
     
     let input: String
-    var scale = 15
     
     init(input: String) {
         self.input = input
@@ -23,8 +22,7 @@ public class Calculator {
         if tokens.count > 0 {
             let parser = Parser(tokens: tokens)
             let expr = try parser.parseExpression()
-            let behaviour = NSDecimalNumberHandler(roundingMode: NSDecimalNumber.RoundingMode.plain, scale: Int16(self.scale), raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-            return expr.result.rounding(accordingToBehavior: behaviour)
+            return expr.result
         } else {
             return nil
         }

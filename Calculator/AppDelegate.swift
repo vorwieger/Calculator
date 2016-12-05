@@ -17,9 +17,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     @IBOutlet weak var scaleField: NSTextField!
     @IBOutlet weak var scaleSlider: NSSlider!
     
+    let numberFormatter = NumberFormatter()
+    
     var scale:Int = 0 {
         didSet {
             scaleField.intValue = Int32(scale)
+            updateFormatter()
             calculate()
         }
     }
@@ -53,18 +56,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
             .replacingOccurrences(of: "/", with: "÷")
     }
     
+    func updateFormatter() {
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.maximumFractionDigits = scale
+        numberFormatter.minimumFractionDigits = scale
+        numberFormatter.roundingMode = .halfUp
+        numberFormatter.locale = NSLocale.current
+    }
+    
     func calculate() {
         do {
             let calculator = Calculator(input: input)
-            calculator.scale = scale
-            let locale = Locale(identifier: "de")
             if let result = try calculator.calc() {
                 if (result == NSDecimalNumber.notANumber) {
                     outputField.textColor = NSColor.red
                     outputField.stringValue = "Error"
                 } else {
                     outputField.textColor = NSColor.black
-                    outputField.stringValue = result.description(withLocale:locale)
+                    outputField.stringValue = numberFormatter.string(from: result)!
                 }
             } else {
                 outputField.stringValue = ""
