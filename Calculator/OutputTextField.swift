@@ -24,21 +24,21 @@ class OutputTextField: NSTextField {
         super.draw(dirtyRect)
     }
     
-    func attributes(_ fontSize:CGFloat) -> [String:AnyObject] {
+    func attributes(_ fontSize:CGFloat) -> [NSAttributedStringKey : Any] {
         let font = defaultFont(fontSize)
         let color = NSColor.white
         let style = NSMutableParagraphStyle()
-        style.lineBreakMode = NSLineBreakMode.byCharWrapping
+        style.lineBreakMode = NSParagraphStyle.LineBreakMode.byCharWrapping
         return [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: color,
-            NSParagraphStyleAttributeName: style
+            NSAttributedStringKey.font: font,
+            NSAttributedStringKey.foregroundColor: color,
+            NSAttributedStringKey.paragraphStyle: style
         ]
     }
     
     func boudingSize(_ size: NSSize, fontSize _fontSize:CGFloat) -> NSSize {
         let attr = attributes(_fontSize)
-        let options = NSStringDrawingOptions.usesLineFragmentOrigin
+        let options = NSString.DrawingOptions.usesLineFragmentOrigin
         let rect = (stringValue as NSString).boundingRect(with: size, options: options, attributes: attr)
         return rect.size
     }

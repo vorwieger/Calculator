@@ -36,17 +36,17 @@ public class Lexer {
         var tokens = [Token]()
         var content = input
         
-        while (content.characters.count > 0) {
+        while (content.count > 0) {
             var matched = false
             for (pattern, generator) in tokenList {
                 if let range = content.range(of:"^\(pattern)", options: .regularExpression) {
-                    let m = content.substring(with:range)
+                    let m = String(content[range])
                     if let t = generator(m) {
                         tokens.append(t)
                     }
-                    let offset = m.characters.count
-                    let index = content.characters.index(content.startIndex, offsetBy: offset)
-                    content = content.substring(from: index)
+                    let offset = m.count
+                    let index = content.index(content.startIndex, offsetBy: offset)
+                    content = String(content[index...])
                     matched = true
                     break
                 }
